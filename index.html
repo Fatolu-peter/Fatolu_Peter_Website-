@@ -1,198 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fatolu Peter Oluwadamilare | Data Engineer Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fatolu Peter Oluwadamilare | Data Analyst</title>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Clash+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#0a0a0a;
-  --panel:#111;
-  --text:#f5f5f0;
-  --muted:rgba(255,255,255,.6);
-  --orange:#F24E1E;
-  --yellow:#FFB800;
-}
+  <style>
+    body{
+      margin:0;
+      font-family:'DM Sans', sans-serif;
+      background:#0a0a0a;
+      color:#fff;
+    }
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:"DM Sans",sans-serif;
-}
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:auto;
+    }
 
-.container{width:90%;max-width:1100px;margin:auto}
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 0;
+    }
 
-.grad-text{
-  background:linear-gradient(135deg,var(--orange),var(--yellow));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+    nav a{
+      margin-left:20px;
+      text-decoration:none;
+      color:#ccc;
+    }
 
-.btn{
-  padding:12px 26px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:600;
-  display:inline-block;
-  margin-top:10px;
-}
+    nav a:hover{
+      color:#F24E1E;
+    }
 
-.primary{
-  background:linear-gradient(135deg,var(--orange),var(--yellow));
-  color:#fff;
-}
+    .hero{
+      padding:80px 0;
+      text-align:center;
+    }
 
-.outline{
-  border:1px solid #fff;
-  color:#fff;
-}
+    .hero h1{
+      font-size:40px;
+      margin-bottom:20px;
+    }
 
-/* NAV */
-nav{
-  position:fixed;
-  width:100%;
-  background:#000;
-  padding:15px 0;
-  z-index:100;
-}
+    .hero p{
+      color:#aaa;
+      max-width:600px;
+      margin:auto;
+    }
 
-nav .container{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:12px 25px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:600;
+    }
 
-nav a{
-  color:#fff;
-  margin-left:20px;
-  text-decoration:none;
-}
+    .btn-primary{
+      background:#F24E1E;
+      color:#fff;
+    }
 
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-}
+    .btn-outline{
+      border:1px solid #fff;
+      color:#fff;
+      margin-left:10px;
+    }
 
-.hero h1{
-  font-size:48px;
-  margin-bottom:20px;
-}
+    section{
+      padding:60px 0;
+    }
 
-/* SECTION */
-section{
-  padding:80px 0;
-}
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
 
-.card{
-  background:var(--panel);
-  padding:25px;
-  border-radius:12px;
-  margin-top:20px;
-}
+    .card{
+      background:#111;
+      padding:20px;
+      border-radius:10px;
+    }
 
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  border-top:1px solid #222;
-}
-</style>
+    footer{
+      text-align:center;
+      padding:40px 0;
+      border-top:1px solid #222;
+      margin-top:40px;
+    }
+
+    .links a{
+      margin:0 10px;
+      color:#ccc;
+      text-decoration:none;
+    }
+
+    .links a:hover{
+      color:#F24E1E;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
   <div class="container">
-    <h2 class="grad-text">FP</h2>
-    <div>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <h1>I Turn Data Into <span class="grad-text">Business Decisions</span></h1>
-    <p>I help companies make smarter decisions using SQL, Python, and Power BI.</p>
+    <!-- HEADER -->
+    <header>
+      <h2>Fatolu Peter</h2>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    <a href="#projects" class="btn primary">View Projects</a>
-    <a href="mailto:oblissman@gmail.com" class="btn outline">Hire Me</a>
-  </div>
-</section>
+    <!-- HERO -->
+    <section class="hero">
+      <h1>I Turn Data Into Business Insights</h1>
+      <p>I help businesses make smarter decisions using SQL, Python, and Power BI dashboards.</p>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <h2 class="grad-text">About Me</h2>
+      <a href="#contact" class="btn btn-primary">Hire Me</a>
+      <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn btn-outline">
+        Connect on LinkedIn →
+      </a>
+    </section>
 
-    <div class="card">
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Me</h2>
       <p>
         I am a Data Analyst and SQL Data Engineer focused on solving real business problems.
-        I build dashboards, pipelines, and systems that transform raw data into valuable insights.
+        I build dashboards, clean data, and create insights that drive growth.
       </p>
 
-      <br>
+      <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn btn-outline">
+        View LinkedIn Profile →
+      </a>
+    </section>
 
-      <!-- ✅ CORRECT LINKEDIN -->
-      <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn outline">LinkedIn</a>
-      <a href="https://github.com/Fatolu-peter" target="_blank" class="btn outline">GitHub</a>
-    </div>
+    <!-- SERVICES -->
+    <section id="services">
+      <h2>Services</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Data Analysis</h3>
+          <p>Transform raw data into actionable insights.</p>
+        </div>
+
+        <div class="card">
+          <h3>SQL Engineering</h3>
+          <p>Build optimized databases and ETL pipelines.</p>
+        </div>
+
+        <div class="card">
+          <h3>Power BI Dashboards</h3>
+          <p>Create interactive dashboards for decision-making.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Let's Work Together</h2>
+      <p>Ready to turn your data into insights?</p>
+
+      <a href="mailto:oblissman@gmail.com" class="btn btn-primary">Hire Me →</a>
+
+      <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn btn-outline">
+        Connect on LinkedIn →
+      </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Fatolu Peter Oluwadamilare</p>
+
+      <div class="links">
+        <a href="mailto:oblissman@gmail.com">Email</a>
+        <a href="https://github.com/Fatolu-peter" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank">LinkedIn</a>
+      </div>
+
+      <p style="margin-top:10px; color:#555;">© 2026 All rights reserved</p>
+    </footer>
+
   </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <h2 class="grad-text">Projects</h2>
-
-    <div class="card">
-      <h3>SQL Analytics Projects</h3>
-      <p>Malta Guinness, Netflix, Spotify, Healthcare Analytics</p>
-    </div>
-
-    <div class="card">
-      <h3>Power BI Dashboards</h3>
-      <p>Fintech, Banking, Sales, Customer Analytics</p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <h2 class="grad-text">Let's Work Together</h2>
-    <p>Ready to turn your data into insights?</p>
-
-    <a href="mailto:oblissman@gmail.com" class="btn primary">Hire Me</a>
-
-    <!-- ✅ CORRECT LINKEDIN -->
-    <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn outline">
-      Connect on LinkedIn
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Fatolu Peter Oluwadamilare</p>
-
-  <!-- ✅ CORRECT LINKEDIN -->
-  <p>
-    <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank">
-      LinkedIn Profile
-    </a>
-  </p>
-</footer>
 
 </body>
 </html>
