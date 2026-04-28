@@ -2,199 +2,1081 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fatolu Peter Oluwadamilare | Data Analyst</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatolu Peter Oluwadamilare | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Clash+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --bg:#0a0a0a;
+      --bg2:#0d0d0d;
+      --panel:#111111;
+      --text:#f5f5f0;
+      --muted:rgba(245,245,240,.6);
+      --soft:rgba(255,255,255,.07);
+      --orange:#F24E1E;
+      --yellow:#FFB800;
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
     body{
-      margin:0;
-      font-family:'DM Sans', sans-serif;
-      background:#0a0a0a;
-      color:#fff;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      overflow-x:hidden;
     }
 
-    .container{
-      width:90%;
-      max-width:1100px;
-      margin:auto;
-    }
+    a{color:inherit}
+    button{font:inherit}
+    .container{width:min(100% - 40px, var(--max)); margin-inline:auto}
+    .page{position:relative}
 
-    header{
-      display:flex;
-      justify-content:space-between;
+    .grad-text{
+      background:linear-gradient(135deg,var(--orange) 0%,var(--yellow) 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .grad-btn,.outline-btn{
+      border:none;
+      border-radius:999px;
+      cursor:pointer;
+      display:inline-flex;
       align-items:center;
-      padding:20px 0;
-    }
-
-    nav a{
-      margin-left:20px;
+      justify-content:center;
       text-decoration:none;
-      color:#ccc;
+      font-weight:600;
+      transition:transform .2s, box-shadow .2s, background .2s, border-color .2s, filter .2s;
     }
+    .grad-btn{
+      background:linear-gradient(135deg,var(--orange),var(--yellow));
+      color:#fff;
+      padding:14px 32px;
+    }
+    .grad-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(242,78,30,.45);filter:brightness(1.08)}
+    .outline-btn{
+      background:transparent;
+      color:var(--text);
+      border:1.5px solid rgba(245,245,240,.3);
+      padding:13px 32px;
+    }
+    .outline-btn:hover{border-color:var(--orange);background:rgba(242,78,30,.08);transform:translateY(-2px)}
 
-    nav a:hover{
-      color:#F24E1E;
+    .small{padding:10px 22px;font-size:13px}
+    .big{padding:15px 32px;font-size:16px}
+
+    .nav{
+      position:fixed;
+      inset:0 0 auto 0;
+      z-index:100;
+      transition:background .3s,border .3s,backdrop-filter .3s;
+      padding:0 5%;
+    }
+    .nav.scrolled{
+      background:rgba(10,10,10,.92);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+      font-family:"Clash Display",sans-serif;
+      font-weight:700;
+      font-size:20px;
+    }
+    .brand-role{
+      color:rgba(245,245,240,.4);
+      font-weight:300;
+      font-size:16px;
+    }
+    .nav-right{display:flex;align-items:center;gap:24px;position:relative}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-link{
+      background:none;
+      border:none;
+      color:rgba(245,245,240,.65);
+      font-size:14px;
+      font-weight:500;
+      cursor:pointer;
+    }
+    .nav-link:hover{color:var(--yellow)}
+    .nav-cta{font-size:13px;padding:10px 22px}
+    .menu-btn{
+      display:none;
+      background:none;
+      border:1px solid rgba(255,255,255,.1);
+      color:var(--text);
+      border-radius:12px;
+      width:42px;
+      height:42px;
+      cursor:pointer;
     }
 
     .hero{
-      padding:80px 0;
-      text-align:center;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:120px 5% 80px;
+      position:relative;
+      overflow:hidden;
     }
-
-    .hero h1{
-      font-size:40px;
-      margin-bottom:20px;
+    .noise-bg::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events:none;
     }
-
-    .hero p{
-      color:#aaa;
-      max-width:600px;
-      margin:auto;
+    .hero-glow{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(80px);
+      pointer-events:none;
     }
-
-    .btn{
-      display:inline-block;
-      margin-top:20px;
-      padding:12px 25px;
-      border-radius:30px;
-      text-decoration:none;
-      font-weight:600;
-    }
-
-    .btn-primary{
-      background:#F24E1E;
-      color:#fff;
-    }
-
-    .btn-outline{
-      border:1px solid #fff;
-      color:#fff;
-      margin-left:10px;
-    }
-
-    section{
-      padding:60px 0;
-    }
-
-    .cards{
+    .glow-one{width:600px;height:600px;background:rgba(242,78,30,.12);top:-100px;right:-150px}
+    .glow-two{width:400px;height:400px;background:rgba(255,184,0,.08);bottom:0;left:-100px}
+    .hero-grid{
+      position:relative;
+      z-index:1;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
     }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(242,78,30,.1);
+      border:1px solid rgba(242,78,30,.25);
+      border-radius:999px;
+      padding:6px 16px;
+      margin-bottom:28px;
+    }
+    .pill span{font-size:12px;font-weight:600;color:var(--yellow);letter-spacing:.06em;text-transform:uppercase}
+    .pulse-dot{
+      width:8px;height:8px;border-radius:50%;background:var(--orange);position:relative;display:inline-block;
+    }
+    .pulse-ring{
+      position:absolute;
+      inset:-3px;
+      border-radius:50%;
+      border:1px solid var(--orange);
+      animation:pulse-ring 1.8s ease-out infinite;
+    }
+    @keyframes pulse-ring{
+      0%{transform:scale(1);opacity:.6}
+      100%{transform:scale(1.8);opacity:0}
+    }
+    .hero-title{
+      font-family:"Clash Display",sans-serif;
+      font-size:clamp(40px,5vw,66px);
+      line-height:1.08;
+      letter-spacing:-.02em;
+      margin-bottom:24px;
+    }
+    .hero-copy{
+      max-width:520px;
+      font-size:18px;
+      line-height:1.7;
+      color:var(--muted);
+      margin-bottom:40px;
+    }
+    .hero-actions,.btn-row{display:flex;gap:16px;flex-wrap:wrap}
+    .stats-row{
+      display:flex;
+      gap:32px;
+      margin-top:56px;
+      padding-top:40px;
+      border-top:1px solid rgba(255,255,255,.07);
+      flex-wrap:wrap;
+    }
+    .stat-value{
+      font-family:"Clash Display",sans-serif;
+      font-size:30px;
+      font-weight:700;
+    }
+    .stat-label{font-size:12px;color:rgba(245,245,240,.45);margin-top:2px}
 
-    .card{
+    .hero-image-wrap{display:flex;justify-content:center;align-items:center}
+    .floating{animation:float 7s ease-in-out infinite;position:relative}
+    @keyframes float{
+      0%,100%{transform:translateY(0) rotate(0deg)}
+      33%{transform:translateY(-12px) rotate(1deg)}
+      66%{transform:translateY(6px) rotate(-1deg)}
+    }
+    .hero-profile-ring{
+      position:absolute;
+      inset:-8px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#F24E1E55,#FFB80044);
+      filter:blur(16px);
+    }
+    .hero-profile{
+      width:340px;
+      height:340px;
+      border-radius:50%;
+      background:linear-gradient(135deg, rgba(242,78,30,.18), rgba(255,184,0,.12));
+      border:2px solid rgba(242,78,30,.4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      z-index:1;
+      overflow:hidden;
+    }
+    .hero-profile img{
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center top;
+      border:3px solid rgba(255,255,255,.12);
+      display:block;
+    }
+    .orbit-badge{
+      position:absolute;
       background:#111;
-      padding:20px;
-      border-radius:10px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:999px;
+      padding:6px 14px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.06em;
+      white-space:nowrap;
     }
+    .badge-top{top:-20px;left:50%;transform:translateX(-50%);color:var(--orange);border-color:rgba(242,78,30,.25)}
+    .badge-bottom{bottom:-20px;left:50%;transform:translateX(-50%);color:var(--yellow);border-color:rgba(255,184,0,.25)}
+    .badge-left{top:50%;left:-20px;transform:translateY(-50%);color:var(--orange);border-color:rgba(242,78,30,.25)}
+    .badge-right{top:50%;right:-20px;transform:translateY(-50%);color:var(--yellow);border-color:rgba(255,184,0,.25)}
 
-    footer{
+    .section{padding:100px 5%; position:relative}
+    .dark{background:var(--bg2)}
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+    }
+    .feature-panel{
+      position:relative;
+      background:#111;
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:22px;
+      padding:40px;
+    }
+    .feature-panel::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:24px;
+      background:linear-gradient(135deg,var(--orange),var(--yellow));
+      opacity:.3;
+      filter:blur(1px);
+      z-index:-1;
+    }
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .feature-box{
+      background:#0d0d0d;
+      border-radius:14px;
+      padding:20px 16px;
       text-align:center;
-      padding:40px 0;
-      border-top:1px solid #222;
-      margin-top:40px;
+      border:1px solid rgba(255,255,255,.05);
+    }
+    .feature-icon{font-size:28px;margin-bottom:8px}
+    .feature-label{font-size:12px;font-weight:600;color:rgba(245,245,240,.6);letter-spacing:.05em}
+    .location-box{
+      margin-top:20px;
+      padding:16px 20px;
+      background:rgba(242,78,30,.06);
+      border:1px solid rgba(242,78,30,.15);
+      border-radius:12px;
+    }
+    .location-title{font-size:12px;color:var(--yellow);font-weight:600;margin-bottom:4px}
+    .location-text{font-size:14px;color:rgba(245,245,240,.7)}
+
+    .eyebrow{
+      font-size:12px;
+      font-weight:700;
+      color:var(--orange);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    .eyebrow.accent{color:var(--yellow)}
+    .section-title{
+      font-family:"Clash Display",sans-serif;
+      font-size:clamp(28px,3vw,44px);
+      font-weight:700;
+      line-height:1.15;
+      letter-spacing:-.02em;
+      margin-bottom:24px;
+    }
+    .centered{text-align:center}
+    .text-group{
+      font-size:16px;
+      color:var(--muted);
+      line-height:1.8;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
     }
 
-    .links a{
-      margin:0 10px;
-      color:#ccc;
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      margin-top:64px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--soft);
+      border-radius:20px;
+      transition:transform .25s,border-color .25s,box-shadow .25s;
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(242,78,30,.35);
+      box-shadow:0 20px 60px rgba(242,78,30,.12);
+    }
+    .service-card{padding:36px;height:100%}
+    .service-icon{
+      width:56px;height:56px;border-radius:16px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:24px;margin-bottom:24px;
+    }
+    .service-line{width:40px;height:3px;border-radius:2px;margin-bottom:20px}
+    .service-title{
+      font-family:"Clash Display",sans-serif;
+      font-size:22px;
+      font-weight:600;
+      margin-bottom:12px;
+      letter-spacing:-.01em;
+    }
+    .service-desc{font-size:15px;color:rgba(245,245,240,.55);line-height:1.7}
+
+    .tab-wrap{display:flex;justify-content:center;margin-bottom:48px;margin-top:24px}
+    .tabs{
+      display:flex;
+      gap:8px;
+      background:rgba(255,255,255,.04);
+      border-radius:999px;
+      padding:6px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .tab-btn{
+      background:none;
+      border:none;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+      padding:10px 24px;
+      border-radius:999px;
+      color:rgba(245,245,240,.5);
+    }
+    .tab-btn.active{
+      background:linear-gradient(135deg,var(--orange),var(--yellow));
+      color:#fff;
+    }
+    .tab-panel{animation:fadeUp .6s ease both}
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .tab-grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:32px;
+      align-items:start;
+    }
+    .section-label{
+      font-size:13px;
+      color:rgba(245,245,240,.4);
+      margin-bottom:12px;
+      font-weight:600;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .repo-list,.cap-list{display:flex;flex-direction:column;gap:10px}
+    .repo-item,.cap-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 16px;
+      background:rgba(255,255,255,.03);
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .repo-dot{
+      width:6px;height:6px;border-radius:50%;
+      background:linear-gradient(135deg,var(--orange),var(--yellow));
+      flex-shrink:0;
+    }
+    .cap-item{
+      padding:14px 18px;
+      border-radius:12px;
+      border:1px solid rgba(242,78,30,.12);
+    }
+    .cap-num{
+      width:28px;height:28px;border-radius:8px;
+      background:linear-gradient(135deg,var(--orange),var(--yellow));
+      display:flex;align-items:center;justify-content:center;
+      font-size:12px;font-weight:700;color:#fff;flex-shrink:0;
+    }
+    .pbi-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:16px;
+      margin-top:8px;
+    }
+    .pbi-card,.gh-card{text-decoration:none;color:inherit}
+    .pbi-card{
+      background:var(--panel);
+      border:1px solid var(--soft);
+      border-radius:14px;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      transition:transform .2s,border-color .2s,box-shadow .2s;
+    }
+    .pbi-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,184,0,.4);
+      box-shadow:0 12px 40px rgba(255,184,0,.1);
+    }
+    .pbi-icon{
+      width:44px;height:44px;border-radius:12px;
+      background:linear-gradient(135deg, rgba(255,184,0,.2), rgba(242,78,30,.15));
+      border:1px solid rgba(255,184,0,.25);
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;flex-shrink:0;
+    }
+    .pbi-name{font-weight:600;font-size:15px;margin-bottom:4px}
+    .pbi-link{font-size:12px;color:var(--yellow)}
+
+    .gh-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
+      margin-top:8px;
+    }
+    .gh-card{
+      background:var(--panel);
+      border:1px solid var(--soft);
+      border-radius:14px;
+      padding:18px 22px;
+      transition:transform .2s,border-color .2s;
+      display:block;
+    }
+    .gh-card:hover{transform:translateY(-4px);border-color:rgba(242,78,30,.35)}
+    .gh-top{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+    .gh-name{font-weight:600;font-size:15px}
+    .gh-lang{display:flex;align-items:center;gap:8px}
+    .gh-dot{width:10px;height:10px;border-radius:50%}
+
+    .skills-wrap{max-width:900px;text-align:center}
+    .skills-cloud{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:8px}
+    .skill-tag{
+      padding:8px 18px;
+      border-radius:999px;
+      border:1px solid rgba(242,78,30,.3);
+      font-size:13px;
+      font-weight:500;
+      color:rgba(245,245,240,.8);
+      background:rgba(242,78,30,.06);
+      transition:background .2s,border-color .2s,color .2s,transform .2s;
+    }
+    .skill-tag:hover{
+      background:rgba(242,78,30,.15);
+      border-color:var(--orange);
+      color:#fff;
+      transform:scale(1.04);
+    }
+
+    .impact-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      margin-top:12px;
+    }
+    .stat-card{
+      background:#111;
+      border:1px solid var(--soft);
+      border-radius:16px;
+      padding:28px 24px;
+      text-align:center;
+      transition:transform .2s,border-color .2s;
+    }
+    .stat-card:hover{transform:translateY(-4px);border-color:rgba(242,78,30,.3)}
+    .stat-value-lg{
+      font-family:"Clash Display",sans-serif;
+      font-size:44px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .contact{overflow:hidden;padding:120px 5%;position:relative}
+    .contact-glow{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:700px;
+      height:400px;
+      background:radial-gradient(ellipse, rgba(242,78,30,.12) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .contact-inner{position:relative;z-index:1;max-width:800px}
+    .contact-card{
+      display:inline-block;
+      background:linear-gradient(135deg, rgba(242,78,30,.12), rgba(255,184,0,.08));
+      border:1px solid rgba(242,78,30,.2);
+      border-radius:24px;
+      padding:60px 64px;
+      text-align:center;
+    }
+    .contact-copy{
+      font-size:17px;
+      color:rgba(245,245,240,.55);
+      margin-bottom:40px;
+      line-height:1.7;
+    }
+    .center{justify-content:center}
+
+    .footer{
+      background:#060606;
+      border-top:1px solid rgba(255,255,255,.06);
+      padding:48px 5%;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    .footer-brand{
+      font-family:"Clash Display",sans-serif;
+      font-weight:700;
+      font-size:20px;
+      margin-bottom:6px;
+    }
+    .footer-sub{
+      color:rgba(245,245,240,.3);
+      font-weight:300;
+      font-size:14px;
+      margin-left:4px;
+    }
+    .footer-meta{font-size:13px;color:rgba(245,245,240,.35)}
+    .footer-links{display:flex;gap:20px;flex-wrap:wrap}
+    .footer-links a{
+      color:rgba(245,245,240,.4);
       text-decoration:none;
+      font-size:13px;
+      transition:color .2s;
+    }
+    .footer-links a:hover{color:var(--orange)}
+    .footer-copy{font-size:12px;color:rgba(245,245,240,.2)}
+
+    .fade-in{
+      opacity:0;
+      transform:translateY(32px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .fade-in.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .delay-1{transition-delay:.15s}
+
+    @media (max-width: 1100px){
+      .hero-grid,.about-grid,.tab-grid-2,.services-grid,.impact-grid{grid-template-columns:1fr 1fr}
+      .impact-grid{grid-template-columns:repeat(2,1fr)}
     }
 
-    .links a:hover{
-      color:#F24E1E;
+    @media (max-width: 768px){
+      .nav-links{
+        position:absolute;
+        top:68px;
+        right:0;
+        left:0;
+        background:#0f0f0f;
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:16px;
+        padding:16px;
+        display:none;
+        flex-direction:column;
+        gap:14px;
+      }
+      .nav-links.open{display:flex}
+      .nav-right{gap:10px}
+      .nav-cta{display:none}
+      .menu-btn{display:inline-flex;align-items:center;justify-content:center}
+      .hero-grid,.about-grid,.tab-grid-2,.services-grid,.impact-grid{grid-template-columns:1fr}
+      .hero{padding-top:110px}
+      .hero-title{font-size:clamp(36px,11vw,54px)}
+      .hero-profile{width:280px;height:280px}
+      .hero-profile img{width:245px;height:245px}
+      .stats-row{gap:18px}
+      .contact-card{padding:34px 24px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
     }
   </style>
 </head>
-
 <body>
-
-  <div class="container">
-
-    <!-- HEADER -->
-    <header>
-      <h2>Fatolu Peter</h2>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-      <h1>I Turn Data Into Business Insights</h1>
-      <p>I help businesses make smarter decisions using SQL, Python, and Power BI dashboards.</p>
-
-      <a href="#contact" class="btn btn-primary">Hire Me</a>
-      <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn btn-outline">
-        Connect on LinkedIn →
-      </a>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I am a Data Analyst and SQL Data Engineer focused on solving real business problems.
-        I build dashboards, clean data, and create insights that drive growth.
-      </p>
-
-      <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn btn-outline">
-        View LinkedIn Profile →
-      </a>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services">
-      <h2>Services</h2>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Data Analysis</h3>
-          <p>Transform raw data into actionable insights.</p>
+  <div class="page">
+    <nav class="nav" id="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <span class="grad-text">FP</span>
+          <span class="brand-role">Data Engineer</span>
         </div>
 
-        <div class="card">
-          <h3>SQL Engineering</h3>
-          <p>Build optimized databases and ETL pipelines.</p>
+        <div class="nav-right">
+          <div class="nav-links" id="navLinks">
+            <button class="nav-link" data-target="about">About</button>
+            <button class="nav-link" data-target="services">Services</button>
+            <button class="nav-link" data-target="projects">Projects</button>
+            <button class="nav-link" data-target="skills">Skills</button>
+            <button class="nav-link" data-target="contact">Contact</button>
+          </div>
+          <a href="mailto:oblissman@gmail.com" class="grad-btn nav-cta">Hire Me</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero noise-bg">
+      <div class="hero-glow glow-one"></div>
+      <div class="hero-glow glow-two"></div>
+
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <div class="pill">
+            <span class="pulse-dot"><span class="pulse-ring"></span></span>
+            <span>Available for Work</span>
+          </div>
+
+          <h1 class="hero-title">
+            I Turn Raw Data Into <span class="grad-text">Revenue-Driving</span> Insights
+          </h1>
+
+          <p class="hero-copy">
+            I help businesses transform complex data into clear, actionable decisions using SQL, Python, and Power BI dashboards.
+          </p>
+
+          <div class="hero-actions">
+            <button class="grad-btn scroll-btn" data-target="projects">View Projects →</button>
+            <a href="mailto:oblissman@gmail.com" class="outline-btn">Work With Me</a>
+          </div>
+
+          <div class="stats-row">
+            <div class="mini-stat">
+              <div class="grad-text stat-value">15+</div>
+              <div class="stat-label">SQL Case Studies</div>
+            </div>
+            <div class="mini-stat">
+              <div class="grad-text stat-value">5+</div>
+              <div class="stat-label">Executive Dashboards</div>
+            </div>
+            <div class="mini-stat">
+              <div class="grad-text stat-value">3+</div>
+              <div class="stat-label">Industries Served</div>
+            </div>
+            <div class="mini-stat">
+              <div class="grad-text stat-value">100%</div>
+              <div class="stat-label">Business-Driven Focus</div>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Power BI Dashboards</h3>
-          <p>Create interactive dashboards for decision-making.</p>
+        <div class="hero-image-wrap fade-in">
+          <div class="floating">
+            <div class="hero-profile-ring"></div>
+            <div class="hero-profile">
+              <img
+                alt="Fatolu Peter Oluwadamilare"
+                src="C:\Users\HomePC\Downloads\peter\peter\peter.png"
+              />
+            </div>
+
+            <div class="orbit-badge badge-top">SQL</div>
+            <div class="orbit-badge badge-bottom">Power BI</div>
+            <div class="orbit-badge badge-left">Python</div>
+            <div class="orbit-badge badge-right">ETL</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Let's Work Together</h2>
-      <p>Ready to turn your data into insights?</p>
+    <section class="section dark" id="about">
+      <div class="container about-grid">
+        <div class="fade-in">
+          <div class="feature-panel">
+            <div class="feature-grid">
+              <div class="feature-box"><div class="feature-icon">🗄️</div><div class="feature-label">SQL Expert</div></div>
+              <div class="feature-box"><div class="feature-icon">🐍</div><div class="feature-label">Python Dev</div></div>
+              <div class="feature-box"><div class="feature-icon">📊</div><div class="feature-label">Power BI</div></div>
+              <div class="feature-box"><div class="feature-icon">🔄</div><div class="feature-label">ETL Pipelines</div></div>
+            </div>
 
-      <a href="mailto:oblissman@gmail.com" class="btn btn-primary">Hire Me →</a>
+            <div class="location-box">
+              <div class="location-title">📍 Location</div>
+              <div class="location-text">Lagos, Nigeria</div>
+            </div>
+          </div>
+        </div>
 
-      <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" class="btn btn-outline">
-        Connect on LinkedIn →
-      </a>
+        <div class="fade-in delay-1">
+          <div class="eyebrow">About Me</div>
+          <h2 class="section-title">
+            Results-Driven Data<br><span class="grad-text">Engineer & Analyst</span>
+          </h2>
+          <div class="text-group">
+            <p>I am a results-driven Data Analyst and SQL Data Engineer focused on solving real business problems through data.</p>
+            <p>My work goes beyond basic analysis — I design production-ready data pipelines, build optimized SQL workflows, and develop executive dashboards that support decision-making.</p>
+            <p>I specialize in turning raw, messy data into structured, high-value insights that drive growth.</p>
+          </div>
+          <div class="btn-row" style="margin-top:32px">
+            <a href="https://github.com/Fatolu-peter" target="_blank" rel="noreferrer" class="outline-btn small">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank" rel="noreferrer" class="outline-btn small">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-      <p>Fatolu Peter Oluwadamilare</p>
-
-      <div class="links">
-        <a href="mailto:oblissman@gmail.com">Email</a>
-        <a href="https://github.com/Fatolu-peter" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/fatolu-peter-a31077306" target="_blank">LinkedIn</a>
+    <section class="section" id="services">
+      <div class="container">
+        <div class="center-head fade-in">
+          <div class="eyebrow">What I Do</div>
+          <h2 class="section-title centered">Services That <span class="grad-text">Deliver Value</span></h2>
+        </div>
+        <div class="services-grid" id="servicesGrid"></div>
       </div>
+    </section>
 
-      <p style="margin-top:10px; color:#555;">© 2026 All rights reserved</p>
+    <section class="section dark" id="projects">
+      <div class="container">
+        <div class="center-head fade-in">
+          <div class="eyebrow">Featured Work</div>
+          <h2 class="section-title centered">Projects & <span class="grad-text">Portfolios</span></h2>
+        </div>
+
+        <div class="tab-wrap fade-in delay-1">
+          <div class="tabs" id="tabs">
+            <button class="tab-btn active" data-tab="sql">SQL Analytics</button>
+            <button class="tab-btn" data-tab="powerbi">Power BI Dashboards</button>
+            <button class="tab-btn" data-tab="github">GitHub Repos</button>
+          </div>
+        </div>
+
+        <div id="tabContent"></div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container skills-wrap">
+        <div class="center-head fade-in">
+          <div class="eyebrow">Tech Stack</div>
+          <h2 class="section-title centered">Tools & <span class="grad-text">Technologies</span></h2>
+          <div class="skills-cloud" id="skillsCloud"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark impact">
+      <div class="container">
+        <div class="center-head fade-in">
+          <div class="eyebrow">Track Record</div>
+          <h2 class="section-title centered">Measurable <span class="grad-text">Results & Impact</span></h2>
+        </div>
+        <div class="impact-grid" id="impactGrid"></div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-glow"></div>
+      <div class="container contact-inner fade-in">
+        <div class="contact-card">
+          <div class="eyebrow accent">Let's Collaborate</div>
+          <h2 class="section-title centered">
+            Ready to Turn Your Data Into <span class="grad-text">Business Insights?</span>
+          </h2>
+          <p class="contact-copy">
+            Let's work together to unlock the full value of your data.
+          </p>
+          <div class="btn-row center">
+            <a href="mailto:oblissman@gmail.com" class="grad-btn big">Hire Me →</a>
+            <a href="https://linkedin.com/in/fatolu-peter" target="_blank" rel="noreferrer" class="outline-btn big">Connect on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-brand">
+            <span class="grad-text">Fatolu Peter</span>
+            <span class="footer-sub">Oluwadamilare</span>
+          </div>
+          <div class="footer-meta">Lagos, Nigeria · oblissman@gmail.com</div>
+        </div>
+
+        <div class="footer-links">
+          <a href="mailto:oblissman@gmail.com">Email</a>
+          <a href="https://github.com/Fatolu-peter" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/fatolu-peter" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+
+        <div class="footer-copy">© 2025 Fatolu Peter Oluwadamilare</div>
+      </div>
     </footer>
-
   </div>
 
+  <script>
+    const SERVICES = [
+      {
+        icon: "📊",
+        title: "Data Analysis",
+        desc: "Transform raw datasets into meaningful insights that guide business strategy and unlock hidden growth opportunities.",
+        accent: "#F24E1E",
+      },
+      {
+        icon: "🔧",
+        title: "SQL Data Engineering",
+        desc: "Design efficient ETL pipelines, optimize complex queries, and build analytics-ready databases built for scale.",
+        accent: "#FFB800",
+      },
+      {
+        icon: "📈",
+        title: "Dashboard Development",
+        desc: "Create interactive Power BI dashboards for executives and stakeholders that drive confident decision-making.",
+        accent: "#F24E1E",
+      },
+    ];
+
+    const SQL_PROJECTS = [
+      "Malta Guinness Sales Analysis",
+      "Real Estate Analytics",
+      "Healthcare Analytics",
+      "Netflix SQL Analysis",
+      "Spotify SQL Analysis",
+    ];
+
+    const SQL_CAPABILITIES = [
+      "ETL (Extract, Transform, Load)",
+      "Data Cleaning & Transformation",
+      "KPI Pipeline Development",
+      "Query Optimization (CTEs, Window Functions)",
+      "Data Validation & Quality Checks",
+    ];
+
+    const POWER_BI_DASHBOARDS = [
+      { name: "Fintech Dashboard", url: "https://app.fabric.microsoft.com/links/o_emDkB2Sx" },
+      { name: "Banking Dashboard", url: "https://app.fabric.microsoft.com/links/aVTGMqvSI5" },
+      { name: "Sales Dashboard", url: "https://app.fabric.microsoft.com/links/gE5AgM149U" },
+      { name: "Customer Dashboard", url: "https://app.fabric.microsoft.com/links/YlYMFYnoij" },
+      { name: "Financial Dashboard", url: "https://app.fabric.microsoft.com/links/VRkeILcHVy" },
+    ];
+
+    const GITHUB_PROJECTS = [
+      { name: "Chatbot", lang: "Python", color: "#3572A5" },
+      { name: "Titanic Analysis", lang: "Jupyter Notebook", color: "#DA5B0B" },
+      { name: "House Price Analysis", lang: "Python", color: "#3572A5" },
+      { name: "Fraud Detection", lang: "Python", color: "#3572A5" },
+      { name: "Telco Churn Analysis", lang: "Python", color: "#3572A5" },
+    ];
+
+    const SKILLS = [
+      "SQL", "PostgreSQL", "Python", "Power BI",
+      "ETL Pipelines", "Data Engineering", "Data Analytics",
+    ];
+
+    const STATS = [
+      { value: "15+", label: "SQL Case Studies" },
+      { value: "5+", label: "Executive Dashboards" },
+      { value: "3+", label: "Industries Served" },
+      { value: "100%", label: "Business-Driven Focus" },
+    ];
+
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+    const nav = $('#nav');
+    const navLinks = $('#navLinks');
+    const menuBtn = $('#menuBtn');
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      navLinks.classList.remove('open');
+    }
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    $$('[data-target]').forEach((btn) => {
+      btn.addEventListener('click', () => scrollToSection(btn.dataset.target));
+    });
+
+    const servicesGrid = $('#servicesGrid');
+    servicesGrid.innerHTML = SERVICES.map((s) => `
+      <article class="card service-card fade-in">
+        <div class="service-icon" style="background:linear-gradient(135deg, ${s.accent}22, ${s.accent}08); border:1px solid ${s.accent}30;">${s.icon}</div>
+        <div class="service-line" style="background:linear-gradient(90deg, ${s.accent}, #FFB800)"></div>
+        <h3 class="service-title">${s.title}</h3>
+        <p class="service-desc">${s.desc}</p>
+      </article>
+    `).join('');
+
+    const skillsCloud = $('#skillsCloud');
+    skillsCloud.innerHTML = SKILLS.map((skill) => `<div class="skill-tag">${skill}</div>`).join('');
+
+    const impactGrid = $('#impactGrid');
+    impactGrid.innerHTML = STATS.map((s) => `
+      <article class="stat-card fade-in">
+        <div class="grad-text stat-value-lg">${s.value}</div>
+        <div class="stat-label" style="font-size:14px">${s.label}</div>
+      </article>
+    `).join('');
+
+    const tabContent = $('#tabContent');
+    const tabs = $('#tabs');
+
+    function renderTab(tab) {
+      let html = '';
+
+      if (tab === 'sql') {
+        html = `
+          <div class="tab-panel">
+            <div class="tab-grid-2">
+              <article class="card" style="padding:36px">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px">
+                  <div style="font-size:24px">🗄️</div>
+                  <div>
+                    <h3 class="service-title" style="margin-bottom:4px">SQL Data Analytics Portfolio</h3>
+                    <a href="https://github.com/Fatolu-peter/SQL-Data-Analytics-Projects" target="_blank" rel="noreferrer" style="font-size:13px;color:#F24E1E;text-decoration:none">github.com ↗</a>
+                  </div>
+                </div>
+                <div class="section-label">Case Studies</div>
+                <div class="repo-list">
+                  ${SQL_PROJECTS.map((p) => `
+                    <div class="repo-item">
+                      <div class="repo-dot"></div>
+                      <span style="font-size:14px;color:rgba(245,245,240,.75)">${p}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </article>
+
+              <article class="card" style="padding:36px">
+                <div class="section-label">Key Capabilities</div>
+                <div class="cap-list">
+                  ${SQL_CAPABILITIES.map((c, i) => `
+                    <div class="cap-item" style="background:rgba(242,78,30,${0.04 + i * 0.01})">
+                      <div class="cap-num">${i + 1}</div>
+                      <span style="font-size:14px;color:rgba(245,245,240,.75)">${c}</span>
+                    </div>
+                  `).join('')}
+                </div>
+                <a href="https://github.com/Fatolu-peter/SQL-Data-Analytics-Projects" target="_blank" rel="noreferrer" class="grad-btn" style="display:block;text-align:center;margin-top:28px;text-decoration:none">
+                  View on GitHub →
+                </a>
+              </article>
+            </div>
+          </div>
+        `;
+      }
+
+      if (tab === 'powerbi') {
+        html = `
+          <div class="tab-panel">
+            <p style="text-align:center;color:rgba(245,245,240,.5);margin-bottom:36px;font-size:15px">
+              Executive-level analytics dashboards across multiple industries
+            </p>
+            <div class="pbi-grid">
+              ${POWER_BI_DASHBOARDS.map((d) => `
+                <a class="pbi-card" href="${d.url}" target="_blank" rel="noreferrer">
+                  <div class="pbi-icon">📊</div>
+                  <div>
+                    <div class="pbi-name">${d.name}</div>
+                    <div class="pbi-link">View Dashboard ↗</div>
+                  </div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (tab === 'github') {
+        html = `
+          <div class="tab-panel">
+            <div class="gh-grid">
+              ${GITHUB_PROJECTS.map((p) => `
+                <a class="gh-card" href="https://github.com/Fatolu-peter" target="_blank" rel="noreferrer">
+                  <div class="gh-top">
+                    <span style="font-size:18px">📁</span>
+                    <div class="gh-name">${p.name}</div>
+                  </div>
+                  <div class="gh-lang">
+                    <div class="gh-dot" style="background:${p.color}"></div>
+                    <span style="font-size:12px;color:rgba(245,245,240,.45)">${p.lang}</span>
+                  </div>
+                </a>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      tabContent.innerHTML = html;
+      observeFadeIns();
+    }
+
+    tabs.addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      $$('.tab-btn', tabs).forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderTab(btn.dataset.tab);
+    });
+
+    function observeFadeIns() {
+      const els = $$('.fade-in');
+      const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      els.forEach((el) => io.observe(el));
+    }
+
+    observeFadeIns();
+    renderTab('sql');
+  </script>
 </body>
 </html>
